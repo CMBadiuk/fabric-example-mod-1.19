@@ -1,10 +1,14 @@
 package net.cmbadiuk.tutorialmod.block;
 
 import net.cmbadiuk.tutorialmod.TutorialMod;
+import net.cmbadiuk.tutorialmod.block.custom.JumpBlock;
+import net.cmbadiuk.tutorialmod.block.custom.TanzaniteLampBlock;
 import net.cmbadiuk.tutorialmod.item.ModItemGroup;
+import net.cmbadiuk.tutorialmod.item.custom.EggplantCropBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.block.OreBlock;
 import net.minecraft.item.BlockItem;
@@ -27,8 +31,20 @@ public class ModBlocks {
             new OreBlock(FabricBlockSettings.of(Material.STONE).strength(4f).requiresTool(),
                     UniformIntProvider.create(3, 7)), ModItemGroup.TANZANITE);
 
+    public static final Block JUMP_BLOCK = RegisterBlock("jump_block",
+            new JumpBlock(FabricBlockSettings.of(Material.METAL).strength(4f).requiresTool()), ModItemGroup.TANZANITE);
+
+    public static final Block TANZANITE_LAMP = RegisterBlock("tanzanite_lamp",
+            new TanzaniteLampBlock(FabricBlockSettings.of(Material.STONE).strength(4f).requiresTool().luminance(state -> state.get(TanzaniteLampBlock.LIT) ? 15 : 0)), ModItemGroup.TANZANITE);
+
+    public static final Block EGGPLANT_CROP = RegisterBlockWithoutItem("eggplant_crop",
+            new EggplantCropBlock(FabricBlockSettings.copy(Blocks.WHEAT)));
+
     private static Block RegisterBlock(String name, Block block, ItemGroup tab){
         RegisterBlockItem(name, block, tab);
+        return Registry.register(Registry.BLOCK, new Identifier(TutorialMod.MOD_ID, name), block);
+    }
+    private static Block RegisterBlockWithoutItem(String name, Block block){
         return Registry.register(Registry.BLOCK, new Identifier(TutorialMod.MOD_ID, name), block);
     }
 

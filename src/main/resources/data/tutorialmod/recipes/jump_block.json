@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#A#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "tutorialmod:tanzanite"
+    },
+    "A": {
+      "item": "minecraft:slime_ball"
+    }
+  },
+  "result": {
+    "item": "tutorialmod:jump_block",
+    "count": 1
+  }
+}
