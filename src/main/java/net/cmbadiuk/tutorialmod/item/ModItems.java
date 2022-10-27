@@ -4,10 +4,7 @@ import net.cmbadiuk.tutorialmod.TutorialMod;
 import net.cmbadiuk.tutorialmod.block.ModBlocks;
 import net.cmbadiuk.tutorialmod.item.custom.EightBallItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.item.AliasedBlockItem;
-import net.minecraft.item.FoodComponent;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -26,6 +23,10 @@ public class ModItems {
     public static final Item EGGPLANT = registerItem("eggplant",
             new Item(new FabricItemSettings().group(ModItemGroup.TANZANITE)
                     .food(new FoodComponent.Builder().hunger(4).saturationModifier(4f).build())));
+
+    public static final Item TEST_SWORD = registerItem("test_sword",
+            new SwordItem(ToolMaterials.DIAMOND, 10, 5f,
+                    new FabricItemSettings().group(ModItemGroup.TANZANITE).maxCount(1)));
 
 
     private static Item registerItem(String name, Item item){
